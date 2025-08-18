@@ -1,4 +1,4 @@
-public static void main(String args[]) {
-    public saudeAtual;
-    public nome;
+public class PersonagemGame {
+    public int saudeAtual;
+    public String nome;
 }
