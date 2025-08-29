@@ -50,12 +50,13 @@ public class ContaBancariaBasica {
         if (saldo < 0) {
             return 0.0;
         }
-        double taxaMensal = taxaJurosAnual / 11.0 / 100;
+        double taxaMensal = (taxaJurosAnual / 100.0) / 12.0;
         return saldo * taxaMensal;
     }
 
     public void aplicarAtualizacaoMensal() {
-        saldo = saldo - calcularTarifaMensal();
-        saldo = saldo + calcularJurosMensal();
+        double tarifa = calcularTarifaMensal();
+        double juros = calcularJurosMensal();
+        this.saldo = this.saldo - tarifa + juros;
     }
 }
