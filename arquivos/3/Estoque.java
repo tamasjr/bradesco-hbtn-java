@@ -185,7 +185,7 @@ public class Estoque {
 
                     System.out.println(String.format(
                             Locale.US,
-                            "ID: %d, Nome: %s, Quantidade: %d, Preço: %.2f",
+                            "ID: %d, Nome: %s, Quantidade: %d, Preço: %.1f",
                             id, nome, quantidade, preco
                     ));
                     count++;
