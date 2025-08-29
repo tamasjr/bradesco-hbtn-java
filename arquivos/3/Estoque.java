@@ -166,7 +166,6 @@ public class Estoque {
     }
 
     public void exibirEstoque() {
-        System.out.println("\n--- Produtos no Estoque ---");
         int count = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoCSV))) {
@@ -189,7 +188,7 @@ public class Estoque {
 
                     System.out.println(String.format(
                             Locale.US,
-                            "ID: %d | Nome: %s | Quantidade: %d | Preço: %.2f",
+                            "ID: %d, Nome: %s, Quantidade: %d, Preço: %.2f",
                             id, nome, quantidade, preco
                     ));
                     count++;
