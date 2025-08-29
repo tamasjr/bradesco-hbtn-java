@@ -1,3 +1,14 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class Estoque {
     private String arquivoCSV;
 
@@ -5,7 +16,6 @@ public class Estoque {
         this.arquivoCSV = arquivoCSV;
     }
 
-    // java
     public void adicionarProduto(String nome, int quantidade, double preco) {
         if (nome == null || nome.trim().isEmpty()) {
             System.err.println("Nome inválido.");
@@ -22,9 +32,9 @@ public class Estoque {
 
         int nextId = 1;
 
-        java.io.File file = new java.io.File(arquivoCSV);
+        File file = new File(arquivoCSV);
         if (file.exists()) {
-            try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(file))) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     if (line.trim().isEmpty()) continue;
@@ -35,29 +45,31 @@ public class Estoque {
                         if (id >= nextId) nextId = id + 1;
                     } catch (NumberFormatException ignore) {}
                 }
-            } catch (java.io.IOException e) {
+            } catch (IOException e) {
                 System.err.println("Erro ao ler o arquivo para obter o próximo ID: " + e.getMessage());
             }
         }
 
-        String registro = String.format(java.util.Locale.US, "%d,%s,%d,%.2f",
+        String registro = String.format(Locale.US, "%d,%s,%d,%.2f",
                 nextId, nome.trim(), quantidade, preco);
 
-        try (java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter(file, true))) {
-            bw.newLine();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            if (file.exists() && file.length() > 0) {
+                bw.newLine();
+            }
             bw.write(registro);
             System.out.println("Produto adicionado com ID " + nextId + ".");
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
     }
 
     public void excluirProduto(int id) {
-        java.io.File file = new java.io.File(arquivoCSV);
-        java.util.List<String> outLines = new java.util.ArrayList<>();
+        File file = new File(arquivoCSV);
+        List<String> outLines = new ArrayList<>();
         boolean found = false;
 
-        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) {
@@ -75,10 +87,10 @@ public class Estoque {
                 }
                 outLines.add(line);
             }
-        } catch (java.io.FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println("Arquivo não encontrado: " + arquivoCSV);
             return;
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + arquivoCSV + " - " + e.getMessage());
             return;
         }
@@ -88,13 +100,13 @@ public class Estoque {
             return;
         }
 
-        try (java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter(file, false))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, false))) {
             for (int i = 0; i < outLines.size(); i++) {
                 bw.write(outLines.get(i));
                 if (i < outLines.size() - 1) bw.newLine();
             }
             System.out.println("Produto excluído.");
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
     }
@@ -105,11 +117,11 @@ public class Estoque {
             return;
         }
 
-        java.io.File file = new java.io.File(arquivoCSV);
-        java.util.List<String> outLines = new java.util.ArrayList<>();
+        File file = new File(arquivoCSV);
+        List<String> outLines = new ArrayList<>();
         boolean updated = false;
 
-        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) {
@@ -129,10 +141,10 @@ public class Estoque {
                 }
                 outLines.add(line);
             }
-        } catch (java.io.FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println("Arquivo não encontrado: " + arquivoCSV);
             return;
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + arquivoCSV + " - " + e.getMessage());
             return;
         }
@@ -142,13 +154,13 @@ public class Estoque {
             return;
         }
 
-        try (java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter(file, false))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, false))) {
             for (int i = 0; i < outLines.size(); i++) {
                 bw.write(outLines.get(i));
                 if (i < outLines.size() - 1) bw.newLine();
             }
             System.out.println("Quantidade atualizada.");
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
     }
@@ -157,7 +169,7 @@ public class Estoque {
         System.out.println("\n--- Produtos no Estoque ---");
         int count = 0;
 
-        try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(arquivoCSV))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivoCSV))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
@@ -176,7 +188,7 @@ public class Estoque {
                     double preco = Double.parseDouble(precoStr);
 
                     System.out.println(String.format(
-                            java.util.Locale.US,
+                            Locale.US,
                             "ID: %d | Nome: %s | Quantidade: %d | Preço: %.2f",
                             id, nome, quantidade, preco
                     ));
@@ -184,10 +196,10 @@ public class Estoque {
                 } catch (NumberFormatException ignore) {
                 }
             }
-        } catch (java.io.FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.err.println("Arquivo não encontrado: " + arquivoCSV);
             return;
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + arquivoCSV + " - " + e.getMessage());
             return;
         }
