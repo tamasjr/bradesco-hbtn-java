@@ -37,7 +37,7 @@ public class GerenciamentoDeContatos {
             System.out.println("Nome: " + nome);
             System.out.println("Telefones: " + contato.getTelefones());
             System.out.println("Emails: " + contato.getEmails());
-            System.out.println("-----------------------");
+            System.out.println("-------------------------------");
         }
     }
 
@@ -50,7 +50,7 @@ public class GerenciamentoDeContatos {
             System.out.println("Telefones: " + contato.getTelefones());
             System.out.println("Emails: " + contato.getEmails());
         } else {
-            System.out.println("Contato com nome " + nome + " não encontrado.");
+            System.out.println("Contato " + nome + " não encontrado.");
         }
     }
 
@@ -61,7 +61,7 @@ public class GerenciamentoDeContatos {
             contatos.remove(nome);
             System.out.println("Contato " + nome + " removido com sucesso!");
         } else {
-            System.out.println("Contato com nome " + nome + " não encontrado.");
+            System.out.println("Contato " + nome + " não encontrado.");
         }
     }
 
