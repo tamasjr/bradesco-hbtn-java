@@ -58,7 +58,6 @@ public class Estoque {
                 bw.newLine();
             }
             bw.write(registro);
-            System.out.println("Produto adicionado com ID " + nextId + ".");
         } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
@@ -105,7 +104,6 @@ public class Estoque {
                 bw.write(outLines.get(i));
                 if (i < outLines.size() - 1) bw.newLine();
             }
-            System.out.println("Produto excluído.");
         } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
@@ -159,7 +157,6 @@ public class Estoque {
                 bw.write(outLines.get(i));
                 if (i < outLines.size() - 1) bw.newLine();
             }
-            System.out.println("Quantidade atualizada.");
         } catch (IOException e) {
             System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
         }
