@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Estoque {
     private String arquivoCSV;
@@ -183,11 +185,16 @@ public class Estoque {
                     int quantidade = Integer.parseInt(qtdStr);
                     double preco = Double.parseDouble(precoStr);
 
+                    BigDecimal precoBD = new BigDecimal(precoStr).setScale(2, RoundingMode.DOWN);
+                    String precoFmt = precoBD.stripTrailingZeros().toPlainString();
+                    if (!precoFmt.contains(".")) {
+                        precoFmt = precoFmt + ".0";
+                    }
                     System.out.println(String.format(
-                            Locale.US,
-                            "ID: %d, Nome: %s, Quantidade: %d, Preço: %.1f",
+                            "ID: %d, Nome: %s, Quantidade: %d, Preço: %s",
                             id, nome, quantidade, preco
                     ));
+
                     count++;
                 } catch (NumberFormatException ignore) {
                 }
