@@ -27,6 +27,7 @@ public class PessoasArray {
                 found = true;
             }
         }
+
         if (!found) {
             throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
         }
