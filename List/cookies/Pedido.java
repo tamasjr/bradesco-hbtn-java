@@ -1,5 +1,9 @@
 public class Pedido {
-    private java.util.List<PedidoCookie> pedidos = new java.util.ArrayList<>();
+    private java.util.List<PedidoCookie> pedidos;
+
+    public Pedido() {
+        this.pedidos = new java.util.ArrayList<>();
+    }
 
     public void adicionarPedidoCookie(PedidoCookie pedido) {
         pedidos.add(pedido);
