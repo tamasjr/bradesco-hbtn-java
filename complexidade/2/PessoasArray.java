@@ -4,6 +4,7 @@ public class PessoasArray {
     private String[] nomes;
 
     public PessoasArray() {
+        
         nomes = new String[]{"Amanda", "Beatriz", "Carlos","Daniela","Eduardo",
                 "Fabio","Gustavo", "Hingrid","Isabela","Joao","Leise","Maria",
                 "Norberto","Otavio","Paulo", "Quirino","Renata","Sabata",
@@ -29,15 +30,14 @@ public class PessoasArray {
             int res = nome.compareTo(nomes[mid]);
             if (res == 0) {
                 System.out.println("Nome " + nome + " encontrado na posição " + mid);
-                found = true;
                 return;
-            }
-            if (res > 0) {
+            } else if (res > 0) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
             }
         }
+
         if (!found) {
             throw new IllegalArgumentException("O nome " + nome + " não se encontra no array de nomes");
         }
