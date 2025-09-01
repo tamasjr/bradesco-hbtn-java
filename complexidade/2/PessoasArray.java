@@ -1,10 +1,16 @@
-// PessoasArray.java
+import java.util.Set;
+import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.TreeMap;
+import java.util.SortedMap;
+import java.util.Map;
+
 public class PessoasArray {
 
     private String[] nomes;
 
     public PessoasArray() {
-        
+
         nomes = new String[]{"Amanda", "Beatriz", "Carlos","Daniela","Eduardo",
                 "Fabio","Gustavo", "Hingrid","Isabela","Joao","Leise","Maria",
                 "Norberto","Otavio","Paulo", "Quirino","Renata","Sabata",
