@@ -1,8 +1,10 @@
+import java.util.*;
+
 public class Pedido {
-    private java.util.List<PedidoCookie> cookies;
+    private ArrayList<PedidoCookie> cookies;
 
     public Pedido() {
-        this.cookies = new java.util.ArrayList<>();
+        this.cookies = new ArrayList<>();
     }
 
     public void adicionarPedidoCookie(PedidoCookie pedido) {
