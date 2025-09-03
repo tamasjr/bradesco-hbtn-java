@@ -25,7 +25,7 @@ public class Autor implements Comparable<Autor> {
         if (this == o) return true;
         if (!(o instanceof Autor)) return false;
         Autor autor = (Autor) o;
-        return autor.getNome().equals(autor.nome) && autor.getSobrenome().equals(autor.sobrenome);
+        return nome.equals(autor.nome) && sobrenome.equals(autor.sobrenome);
     }
 
     @Override

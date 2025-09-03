@@ -41,11 +41,6 @@ public class Post implements Comparable<Post> {
     }
 
     @Override
-    public int hashCode() {
-        return titulo.hashCode() * 31 + autor.hashCode();
-    }
-
-    @Override
     public int compareTo(Post other) {
         return this.titulo.compareTo(other.titulo);
     }
