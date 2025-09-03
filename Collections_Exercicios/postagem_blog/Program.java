@@ -43,14 +43,14 @@ public class Program {
                 "A ferramenta Hadoop bla bla bla",
                 Categorias.DATA_SCIENCE);
 
-        blog1.adicionarPostagem(post1);
-        blog1.adicionarPostagem(post2);
-        blog1.adicionarPostagem(post3);
-        blog1.adicionarPostagem(post4);
-        blog1.adicionarPostagem(post5);
-        blog1.adicionarPostagem(post6);
 
         try {
+            blog1.adicionarPostagem(post1);
+            blog1.adicionarPostagem(post2);
+            blog1.adicionarPostagem(post3);
+            blog1.adicionarPostagem(post4);
+            blog1.adicionarPostagem(post5);
+            blog1.adicionarPostagem(post6);
             blog1.adicionarPostagem(post7);
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
