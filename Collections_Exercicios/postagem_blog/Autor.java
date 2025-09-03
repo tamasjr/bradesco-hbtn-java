@@ -26,4 +26,9 @@ public class Autor implements Comparable<Autor> {
         if (!(o instanceof Autor)) return false;
         Autor autor = (Autor) o;
     }
+
+    @Override
+    public int compareTo(Autor other) {
+        return this.nome.compareTo(other.nome);
+    }
 }
