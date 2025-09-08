@@ -25,7 +25,7 @@ public class Blog {
     }
 
     public Map<Categorias, Integer> obterContagemPorCategoria() {
-        Map<Categorias, Integer> contagem = new HashMap<>();
+        Map<Categorias, Integer> contagem = new TreeMap<>();
         for (Post postagem : postagens) {
             Categorias categoria = postagem.getCategoria();
             contagem.put(categoria, contagem.getOrDefault(categoria, 0) + 1);
@@ -54,7 +54,7 @@ public class Blog {
     }
 
     public Map<Categorias, Set<Post>> obterTodosPostsPorCategorias() {
-        Map<Categorias, Set<Post>> map = new HashMap<>();
+        Map<Categorias, Set<Post>> map = new TreeMap<>();
         for (Post postagem : postagens) {
             map.computeIfAbsent(postagem.getCategoria(), k -> new TreeSet<>()).add(postagem);
         }
