@@ -1,4 +1,6 @@
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 public class Produto {
     private int codigo;
@@ -15,7 +17,9 @@ public class Produto {
 
     @Override
     public String toString() {
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
+        symbols.setDecimalSeparator(',');
+        DecimalFormat df = new DecimalFormat("0.00", symbols);
         return "[" + codigo + "] " + nome + " " + categoria + " R$ " + df.format(preco);
     }
 
