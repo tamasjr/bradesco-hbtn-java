@@ -17,6 +17,7 @@ public class Pessoa {
         this.salario = salario;
     }
 
+    @Override
     public String toString() {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setDecimalSeparator(',');
